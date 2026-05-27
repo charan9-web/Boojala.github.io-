@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charan Boojala</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;
+  --bg2:#f5f5f7;
+  --bg3:#e8e8ed;
+  --txt:#1d1d1f;
+  --mid:#6e6e73;
+  --dim:#aeaeb2;
+  --acc:#0071e3;
+  --acc2:#06c;
+  --line:rgba(0,0,0,0.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:52px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:0.5px solid var(--line);
+}
+.nav-logo{font-size:0.82rem;font-weight:600;color:var(--txt);text-decoration:none;letter-spacing:-0.01em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.75rem;color:var(--mid);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--txt)}
+.nav-cta{font-size:0.75rem;font-weight:500;color:var(--acc);text-decoration:none;transition:opacity .15s}
+.nav-cta:hover{opacity:0.7}
+
+/* SECTIONS */
+section{width:100%;overflow:hidden}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:120px 24px 80px;
+  background:var(--bg);
+  position:relative;
+}
+.hero-eyebrow{
+  font-size:0.78rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:1.5rem;
+  animation:heroFadeUp .6s ease both;
+}
+.hero h1{
+  font-size:clamp(3.2rem,8vw,7rem);
+  font-weight:600;line-height:1.05;
+  letter-spacing:-0.04em;
+  color:var(--txt);
+  margin-bottom:1.5rem;
+  animation:heroFadeUp .7s ease .08s both;
+}
+.hero-sub{
+  font-size:clamp(1.1rem,2.5vw,1.5rem);
+  font-weight:300;color:var(--mid);
+  max-width:600px;line-height:1.5;
+  margin-bottom:3rem;
+  animation:heroFadeUp .7s ease .16s both;
+}
+.hero-btns{
+  display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
+  animation:heroFadeUp .7s ease .24s both;
+}
+.btn-blue{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:12px 24px;border-radius:980px;
+  background:var(--acc);color:#fff;
+  font-size:0.85rem;font-weight:500;text-decoration:none;
+  transition:background .15s, transform .15s;
+}
+.btn-blue:hover{background:#0077ed;transform:scale(1.02)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:12px 24px;border-radius:980px;
+  background:transparent;color:var(--acc);
+  border:1.5px solid var(--acc);
+  font-size:0.85rem;font-weight:500;text-decoration:none;
+  transition:all .15s;
+}
+.btn-outline:hover{background:rgba(0,113,227,0.06);transform:scale(1.02)}
+
+/* HERO STATS ROW */
+.stats-row{
+  display:flex;gap:0;
+  margin-top:6rem;
+  border-top:0.5px solid var(--line);
+  border-bottom:0.5px solid var(--line);
+  width:100%;max-width:900px;
+  animation:heroFadeUp .7s ease .32s both;
+}
+@keyframes heroFadeUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.stat{
+  flex:1;padding:2rem 1rem;
+  border-right:0.5px solid var(--line);
+  text-align:center;
+}
+.stat:last-child{border-right:none}
+.stat-val{font-size:2.8rem;font-weight:600;letter-spacing:-0.04em;color:var(--txt);line-height:1}
+.stat-label{font-size:0.72rem;color:var(--mid);margin-top:6px;letter-spacing:0.01em}
+
+/* VISIBLE STATE */
+.visible .hero-eyebrow,
+.visible .hero h1,
+.visible .hero-sub,
+.visible .hero-btns,
+.visible .stats-row{opacity:1;transform:translateY(0)}
+
+/* MARQUEE */
+.marquee-wrap{
+  background:var(--bg2);
+  padding:18px 0;
+  border-top:0.5px solid var(--line);
+  border-bottom:0.5px solid var(--line);
+  overflow:hidden;
+  white-space:nowrap;
+}
+.marquee-inner{
+  display:inline-block;
+  animation:marquee 28s linear infinite;
+}
+.marquee-inner span{
+  font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--mid);padding:0 2.5rem;
+}
+.marquee-inner span em{color:var(--dim);font-style:normal}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* BENTO GRID */
+.bento-section{
+  padding:100px 24px;
+  max-width:1100px;margin:0 auto;
+}
+.section-label{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:1rem;
+}
+.section-title{
+  font-size:clamp(2rem,4vw,3rem);font-weight:600;
+  letter-spacing:-0.03em;color:var(--txt);
+  margin-bottom:3rem;line-height:1.1;
+}
+
+.bento{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto;
+  gap:16px;
+}
+.card{
+  background:var(--bg2);
+  border-radius:18px;
+  padding:2rem;
+  position:relative;overflow:hidden;
+  opacity:0;transform:translateY(40px);
+  transition:opacity .6s ease, transform .6s ease, box-shadow .2s;
+}
+.card.in-view{opacity:1;transform:translateY(0)}
+.card:hover{box-shadow:0 8px 40px rgba(0,0,0,0.1);transform:translateY(-3px) scale(1.005)}
+.card.wide{grid-column:span 2}
+.card.tall{grid-row:span 2}
+.card.dark{background:var(--txt);color:#fff}
+.card.dark .card-label{color:rgba(255,255,255,0.5)}
+.card.dark .card-title{color:#fff}
+.card.dark .card-body{color:rgba(255,255,255,0.65)}
+.card.blue{background:var(--acc);color:#fff}
+.card.blue .card-label{color:rgba(255,255,255,0.6)}
+.card.blue .card-title{color:#fff}
+.card.blue .card-body{color:rgba(255,255,255,0.8)}
+.card-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem}
+.card-title{font-size:1.25rem;font-weight:600;letter-spacing:-0.02em;color:var(--txt);margin-bottom:0.5rem;line-height:1.2}
+.card-body{font-size:0.85rem;color:var(--mid);line-height:1.65}
+.card-metric{font-size:3.5rem;font-weight:700;letter-spacing:-0.05em;line-height:1;margin:1rem 0 0.25rem;color:var(--txt)}
+.card-metric-label{font-size:0.78rem;color:var(--mid)}
+.card.dark .card-metric{color:#fff}
+.card.dark .card-metric-label{color:rgba(255,255,255,0.5)}
+.card.blue .card-metric{color:#fff}
+.card.blue .card-metric-label{color:rgba(255,255,255,0.7)}
+
+/* skill pills inside card */
+.pill-group{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
+.pill{
+  font-size:0.72rem;font-weight:500;
+  padding:5px 12px;border-radius:980px;
+  background:rgba(0,0,0,0.06);color:var(--txt);
+}
+.card.dark .pill{background:rgba(255,255,255,0.12);color:#fff}
+.card.blue .pill{background:rgba(255,255,255,0.2);color:#fff}
+
+/* bar chart */
+.bar-row{display:flex;align-items:center;gap:10px;margin-top:10px}
+.bar-label{font-size:0.72rem;color:var(--mid);width:80px;flex-shrink:0}
+.bar-track{flex:1;height:5px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:var(--acc);border-radius:3px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.card.dark .bar-track{background:rgba(255,255,255,0.12)}
+.card.dark .bar-fill{background:#fff}
+
+/* EXPERIENCE TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{
+  display:grid;grid-template-columns:140px 1fr;
+  gap:2.5rem;
+  padding:3rem 0;
+  border-bottom:0.5px solid var(--line);
+  opacity:0;transform:translateY(30px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.tl-item.in-view{opacity:1;transform:translateY(0)}
+.tl-item:last-child{border-bottom:none}
+.tl-date{font-size:0.78rem;font-weight:500;color:var(--mid);padding-top:3px}
+.tl-co{font-size:0.72rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.tl-role{font-size:1.25rem;font-weight:600;letter-spacing:-0.02em;color:var(--txt);margin-bottom:1rem;line-height:1.2}
+.tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.2rem}
+.tl-tag{font-size:0.68rem;font-weight:500;padding:4px 10px;border-radius:6px;background:var(--bg2);color:var(--mid)}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.tl-bullets li{font-size:0.88rem;color:var(--mid);line-height:1.7;padding-left:1.2rem;position:relative}
+.tl-bullets li::before{content:'';position:absolute;left:0;top:0.62em;width:5px;height:5px;border-radius:50%;background:var(--acc)}
+.tl-bullets strong{color:var(--txt);font-weight:500}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.proj-card{
+  background:var(--bg2);border-radius:18px;padding:2.5rem;
+  opacity:0;transform:translateY(30px);
+  transition:opacity .6s ease, transform .6s ease, box-shadow .2s, transform .2s;
+}
+.proj-card.in-view{opacity:1;transform:translateY(0)}
+.proj-card:hover{box-shadow:0 12px 48px rgba(0,0,0,0.1);transform:translateY(-4px)}
+.proj-num{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;color:var(--dim);margin-bottom:1rem}
+.proj-card h3{font-size:1.15rem;font-weight:600;letter-spacing:-0.02em;color:var(--txt);margin-bottom:0.75rem;line-height:1.25}
+.proj-card p{font-size:0.85rem;color:var(--mid);line-height:1.7;margin-bottom:1.5rem}
+.proj-result{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.78rem;font-weight:600;color:var(--acc);
+  background:rgba(0,113,227,0.07);
+  padding:6px 14px;border-radius:980px;
+}
+
+/* CERTS + EDU */
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:0}
+.info-card{background:var(--bg2);border-radius:18px;padding:2.5rem;opacity:0;transform:translateY(30px);transition:opacity .6s ease, transform .6s ease}
+.info-card.in-view{opacity:1;transform:translateY(0)}
+.info-label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--acc);margin-bottom:1.5rem}
+.cert-row{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem 0;border-bottom:0.5px solid var(--line)}
+.cert-row:last-child{border-bottom:none}
+.cert-badge{font-size:0.62rem;font-weight:700;padding:6px 8px;background:var(--bg3);border-radius:8px;color:var(--mid);line-height:1.2;text-align:center;flex-shrink:0}
+.cert-name{font-size:0.9rem;font-weight:500;color:var(--txt);margin-bottom:3px}
+.cert-by{font-size:0.78rem;color:var(--mid)}
+.edu-name{font-size:1.3rem;font-weight:600;letter-spacing:-0.02em;color:var(--txt);margin-bottom:4px}
+.edu-deg{font-size:0.9rem;color:var(--mid);margin-bottom:6px}
+.edu-year{font-size:0.8rem;font-weight:500;color:var(--acc);margin-bottom:1rem}
+.edu-honor{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:500;color:var(--txt);background:var(--bg3);padding:6px 12px;border-radius:980px;margin-bottom:1.5rem}
+.course-wrap{display:flex;flex-wrap:wrap;gap:6px}
+.course{font-size:0.72rem;padding:4px 10px;border-radius:6px;background:var(--bg3);color:var(--mid)}
+
+/* CONTACT */
+.contact-section{
+  background:var(--txt);
+  padding:120px 24px;
+  text-align:center;
+}
+.contact-section h2{
+  font-size:clamp(2.5rem,6vw,5rem);font-weight:600;
+  letter-spacing:-0.04em;color:#fff;margin-bottom:1rem;line-height:1;
+}
+.contact-section p{font-size:1rem;color:rgba(255,255,255,0.55);margin-bottom:3rem}
+.contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.contact-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:980px;
+  font-size:0.88rem;font-weight:500;text-decoration:none;
+  transition:all .15s;
+}
+.contact-btn.white{background:#fff;color:var(--txt)}
+.contact-btn.white:hover{background:#e8e8e8}
+.contact-btn.ghost{background:transparent;color:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.2)}
+.contact-btn.ghost:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+
+footer{
+  background:var(--bg2);
+  padding:2rem 24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  border-top:0.5px solid var(--line);
+}
+footer p{font-size:0.75rem;color:var(--dim)}
+
+@media(max-width:768px){
+  nav .nav-links{display:none}
+  .bento{grid-template-columns:1fr}
+  .card.wide{grid-column:span 1}
+  .two-up,.proj-grid{grid-template-columns:1fr}
+  .tl-item{grid-template-columns:1fr;gap:0.5rem}
+  .stats-row{flex-wrap:wrap}
+  .stat{min-width:50%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Charan Boojala</a>
+  <ul class="nav-links">
+    <li><a href="#work">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta" onclick="downloadResume(event)">Resume ↓</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero-section">
+  <div class="hero-eyebrow">🟢 Open to roles · Dallas TX · Seattle WA · Remote</div>
+  <h1>I turn messy data<br>into shipped products.</h1>
+  <p class="hero-sub">Senior Data Scientist with 4+ years at <strong style="color:var(--txt);font-weight:600">Pfizer</strong> and <strong style="color:var(--txt);font-weight:600">Citi</strong> — shipping LLM pipelines, forecasting systems, and ML models that leadership actually relies on.</p>
+  <div class="hero-btns">
+    <a href="mailto:vboojala@gmail.com" class="btn-blue">📩 Let's talk</a>
+    <a href="https://linkedin.com/in/vsaicharanreddy" target="_blank" class="btn-outline">LinkedIn ↗</a>
+    <a href="#" class="btn-outline" onclick="downloadResume(event)">Download Resume</a>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-val" data-count="10">0</div><div class="stat-label">M+ Records Analyzed</div></div>
+    <div class="stat"><div class="stat-val" data-count="28">0</div><div class="stat-label">% Throughput Gain</div></div>
+    <div class="stat"><div class="stat-val" data-count="95">0</div><div class="stat-label">% Routing Accuracy</div></div>
+    <div class="stat"><div class="stat-val" data-count="4">0</div><div class="stat-label">+ Years Experience</div></div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF STRIP -->
+<div style="background:var(--bg2);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);padding:3rem 24px;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;">
+    <div style="padding:0 1.5rem;border-right:0.5px solid var(--line)">
+      <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--acc);margin-bottom:0.6rem">Fortune 50 experience</div>
+      <div style="font-size:1rem;font-weight:600;color:var(--txt);margin-bottom:0.4rem">Pfizer & Citi</div>
+      <div style="font-size:0.82rem;color:var(--mid)">Proven in regulated, high-stakes environments where data errors cost millions.</div>
+    </div>
+    <div style="padding:0 1.5rem;border-right:0.5px solid var(--line)">
+      <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--acc);margin-bottom:0.6rem">End-to-end ownership</div>
+      <div style="font-size:1rem;font-weight:600;color:var(--txt);margin-bottom:0.4rem">Prototype → Production</div>
+      <div style="font-size:0.82rem;color:var(--mid)">I don't hand off to engineering. I build, deploy, monitor, and iterate myself.</div>
+    </div>
+    <div style="padding:0 1.5rem;">
+      <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--acc);margin-bottom:0.6rem">Currently available</div>
+      <div style="font-size:1rem;font-weight:600;color:var(--txt);margin-bottom:0.4rem">M.S. — Dec 2025 · GCP Certified</div>
+      <div style="font-size:0.82rem;color:var(--mid)">Dean's Scholarship graduate, actively interviewing for Senior DS / ML Engineer roles.</div>
+    </div>
+  </div>
+</div>
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>Python <em>·</em></span><span>SQL <em>·</em></span><span>LLMs <em>·</em></span><span>GenAI <em>·</em></span><span>RAG <em>·</em></span><span>PyTorch <em>·</em></span><span>XGBoost <em>·</em></span><span>Apache Spark <em>·</em></span><span>AWS SageMaker <em>·</em></span><span>GCP Vertex AI <em>·</em></span><span>A/B Testing <em>·</em></span><span>Causal Inference <em>·</em></span><span>Time-Series <em>·</em></span><span>MLflow <em>·</em></span><span>Airflow <em>·</em></span><span>Tableau <em>·</em></span>
+    <span>Python <em>·</em></span><span>SQL <em>·</em></span><span>LLMs <em>·</em></span><span>GenAI <em>·</em></span><span>RAG <em>·</em></span><span>PyTorch <em>·</em></span><span>XGBoost <em>·</em></span><span>Apache Spark <em>·</em></span><span>AWS SageMaker <em>·</em></span><span>GCP Vertex AI <em>·</em></span><span>A/B Testing <em>·</em></span><span>Causal Inference <em>·</em></span><span>Time-Series <em>·</em></span><span>MLflow <em>·</em></span><span>Airflow <em>·</em></span><span>Tableau <em>·</em></span>
+  </div>
+</div>
+
+<!-- SKILLS BENTO -->
+<div class="bento-section" id="work">
+  <div class="section-label">Capabilities</div>
+  <div class="section-title">Not just an analyst.<br>An engineer who ships.</div>
+  <div class="bento">
+    <div class="card dark wide" style="transition-delay:.0s">
+      <div class="card-label">What I bring</div>
+      <div class="card-title">From notebook to production — fast.</div>
+      <div class="card-body">I don't just build models. I own the full lifecycle: experiment design, deployment, monitoring, and stakeholder reporting. At Pfizer, my LLM pipeline went from prototype to global production use within a quarter.</div>
+      <div class="pill-group">
+        <span class="pill">LLMs</span><span class="pill">RAG</span><span class="pill">GenAI</span><span class="pill">MLOps</span><span class="pill">Forecasting</span>
+      </div>
+    </div>
+    <div class="card" style="transition-delay:.08s">
+      <div class="card-label">Experimentation</div>
+      <div class="card-title">A/B Testing that sticks</div>
+      <div class="card-body">My experiment frameworks got adopted by <strong>4 ops teams</strong> at Pfizer — not because I was told to, but because the results were undeniable.</div>
+    </div>
+    <div class="card blue" style="transition-delay:.04s">
+      <div class="card-label">Proven impact</div>
+      <div class="card-metric">28%</div>
+      <div class="card-metric-label">Throughput gain at Pfizer · global pipeline</div>
+    </div>
+    <div class="card" style="transition-delay:.12s">
+      <div class="card-label">Languages</div>
+      <div class="card-title">Deep technical range</div>
+      <div class="card-body">Python · SQL · R · C/C++ · Bash</div>
+      <div class="bar-row"><div class="bar-label">Python</div><div class="bar-track"><div class="bar-fill" data-w="96"></div></div></div>
+      <div class="bar-row"><div class="bar-label">SQL</div><div class="bar-track"><div class="bar-fill" data-w="92"></div></div></div>
+      <div class="bar-row"><div class="bar-label">R</div><div class="bar-track"><div class="bar-fill" data-w="78"></div></div></div>
+    </div>
+    <div class="card" style="transition-delay:.16s">
+      <div class="card-label">Cloud & MLOps</div>
+      <div class="card-title">Deploy anywhere</div>
+      <div class="card-body">AWS SageMaker · GCP Vertex AI · Azure · MLflow · Kubeflow · CI/CD — certified on GCP and Azure.</div>
+    </div>
+    <div class="card" style="transition-delay:.2s">
+      <div class="card-label">Data at scale</div>
+      <div class="card-title">10M+ records, no problem</div>
+      <div class="card-body">PostgreSQL · Spark · Kafka · Airflow · BigQuery · Redshift · MongoDB — built for enterprise data volumes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="bento-section" id="experience" style="padding-top:0">
+  <div class="section-label">Experience</div>
+  <div class="section-title">Enterprise-scale.<br>Startup speed.</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Jan 2025<br>— Present</div>
+      <div>
+        <div class="tl-co">Pfizer · Fortune 50</div>
+        <div class="tl-role">ML Engineer — AIML Data Operations & Analytics</div>
+        <div class="tl-tags"><span class="tl-tag">Pharmacovigilance</span><span class="tl-tag">LLM / GenAI</span><span class="tl-tag">A/B Experiments</span><span class="tl-tag">Forecasting</span></div>
+        <ul class="tl-bullets">
+          <li>Analyzed <strong>10M+ adverse event case narratives</strong> — behavioral pattern analysis drove a <strong>28% throughput increase</strong> across Pfizer's global safety pipeline.</li>
+          <li>Designed rigorous A/B experiments on annotation workflows; frameworks adopted by <strong>4 ops teams globally</strong>, improving labeling efficiency by 25%.</li>
+          <li>Owned capacity forecasting models (ARIMA, Prophet) used by Data Ops leadership to make <strong>multi-quarter resource decisions</strong>.</li>
+          <li>Deployed LLM + RAG pipeline achieving <strong>95% routing accuracy</strong>, cutting triage time 25% and pipeline time 30% — at 99.9% data integrity.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Jan 2021<br>— Dec 2023</div>
+      <div>
+        <div class="tl-co">Citi · Top-5 Global Bank</div>
+        <div class="tl-role">ML Engineer — Analytics, Experimentation & Platform Intelligence</div>
+        <div class="tl-tags"><span class="tl-tag">Fraud Detection</span><span class="tl-tag">Credit Risk</span><span class="tl-tag">A/B Testing</span><span class="tl-tag">ETL</span></div>
+        <ul class="tl-bullets">
+          <li>Designed A/B experiments on fraud detection and credit risk models across <strong>millions of daily transactions</strong>; best practices adopted across 3 platform teams.</li>
+          <li>Re-engineered ETL pipelines in PostgreSQL and Redshift — <strong>40% query performance improvement</strong> through indexing, partition pruning, and query plan analysis.</li>
+          <li>Built interpretable XGBoost and logistic regression models; translated model behavior into <strong>risk policy recommendations</strong> for senior stakeholders.</li>
+          <li>Anomaly detection systems identified <strong>$M-scale fraud patterns</strong> — 30% improvement in detection precision, validated with compliance.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="bento-section" id="projects" style="padding-top:0">
+  <div class="section-label">Projects</div>
+  <div class="section-title">Selected work.</div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-num">01 · UT Dallas · Aug–Dec 2024</div>
+      <h3>Human-in-the-Loop AI Annotation Optimization</h3>
+      <p>End-to-end analytics platform analyzing 8M+ annotation records. Behavioral pattern analysis of annotator performance, task complexity, and data characteristics. A/B experimentation on task design variants identified optimal workflow structures.</p>
+      <span class="proj-result">↑ 28% throughput · ↓ error rate</span>
+    </div>
+    <div class="proj-card" style="transition-delay:.08s">
+      <div class="proj-num">02 · UT Dallas · Jan–May 2024</div>
+      <h3>LLM-Integrated Operational Intelligence Service</h3>
+      <p>Production GenAI pipeline integrating LLM-based semantic classification with RAG embedding retrieval. Capacity forecasting models projected throughput and resource requirements at scale.</p>
+      <span class="proj-result">95% routing accuracy · Full LLM operationalization</span>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION + CERTS -->
+<div class="bento-section" style="padding-top:0">
+  <div class="section-label">Credentials</div>
+  <div class="section-title">Education &<br>Certifications.</div>
+  <div class="two-up">
+    <div class="info-card">
+      <div class="info-label">Education</div>
+      <div class="edu-name">University of Texas at Dallas</div>
+      <div class="edu-deg">M.S., Business Analytics & Artificial Intelligence</div>
+      <div class="edu-year">Dec 2025</div>
+      <div class="edu-honor">🏅 Dean's Excellence Scholarship</div>
+      <div class="course-wrap">
+        <span class="course">Statistical Modeling</span><span class="course">A/B Experimentation</span><span class="course">Big Data Analytics</span><span class="course">Machine Learning</span><span class="course">AI Systems</span><span class="course">Causal Inference</span>
+      </div>
+    </div>
+    <div class="info-card" style="transition-delay:.08s">
+      <div class="info-label">Certifications</div>
+      <div class="cert-row">
+        <div class="cert-badge">GCP<br>ML</div>
+        <div><div class="cert-name">Google Cloud Professional ML Engineer</div><div class="cert-by">Vertex AI · Distributed ML · Cloud-native deployments</div></div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-badge">AZ<br>900</div>
+        <div><div class="cert-name">Microsoft Azure Fundamentals</div><div class="cert-by">Cloud services · Infrastructure · Security & compliance</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <h2>Ready to contribute<br>from day one.</h2>
+  <p>Available immediately · Open to full-time roles in Dallas TX, Seattle WA, or remote.</p>
+  <div class="contact-btns">
+    <a href="mailto:vboojala@gmail.com" class="contact-btn white">📩 vboojala@gmail.com</a>
+    <a href="tel:4695098781" class="contact-btn ghost">469.509.8781</a>
+    <a href="https://linkedin.com/in/vsaicharanreddy" target="_blank" class="contact-btn ghost">LinkedIn ↗</a>
+    <a href="#" class="contact-btn ghost" onclick="downloadResume(event)">↓ Resume PDF</a>
+  </div>
+</section>
+
+<footer>
+  <p>Venkata Sai Charan Boojala · Senior Data Scientist</p>
+  <p>Dallas, TX · Open to Seattle, WA · 2025</p>
+</footer>
+
+<script>
+function downloadResume(e){
+  e.preventDefault();
+  const orig=document.title;
+  document.title='Charan_Boojala_Resume_2025';
+  window.print();
+  document.title=orig;
+}
+
+window.addEventListener('load',()=>{ setTimeout(animateCounters, 700); });
+
+/* Counter animation */
+function animateCounters(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const target = parseInt(el.dataset.count);
+    const suffix = el.nextElementSibling?.textContent.includes('M') ? 'M' : el.nextElementSibling?.textContent.includes('%') ? '%' : '+';
+    let start = 0;
+    const step = target / 40;
+    const interval = setInterval(()=>{
+      start = Math.min(start + step, target);
+      el.textContent = Math.round(start);
+      if(start >= target) clearInterval(interval);
+    }, 30);
+  });
+}
+
+/* Scroll reveal */
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in-view');
+      /* animate bars */
+      e.target.querySelectorAll('.bar-fill[data-w]').forEach(bar=>{
+        setTimeout(()=>{ bar.style.width = bar.dataset.w + '%'; }, 200);
+      });
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll('.card,.tl-item,.proj-card,.info-card').forEach(el=>{
+  revealObserver.observe(el);
+});
+
+/* Parallax subtle on hero h1 */
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY;
+  const h1 = document.querySelector('.hero h1');
+  if(h1) h1.style.transform = `translateY(${y * 0.18}px)`;
+});
+</script>
+</body>
+</html>
